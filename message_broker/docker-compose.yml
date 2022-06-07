@@ -1,0 +1,9 @@
+services:
+  go:
+    image: golang
+    volumes:
+      - .:/usr/app
+    working_dir: /usr/app
+    command: tail -f > /dev/null
+    ports:
+      - 51616:51616

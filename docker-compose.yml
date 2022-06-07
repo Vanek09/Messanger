@@ -1,0 +1,43 @@
+services:
+
+  mongo:
+    image: mongo:4.4
+    networks:
+      - msgnetwork
+    ports:
+      - 27017:27017
+
+  api:
+    image: mongo-service
+    networks:
+      - msgnetwork
+    build: 
+      context: ./mongo_service
+      dockerfile: ./Dockerfile.api
+    restart: always
+    ports:
+      - 3000:3000
+  
+  broker:
+    image: message-broker
+    networks:
+      - msgnetwork
+    build: 
+      context: ./message_broker
+      dockerfile: ./Dockerfile.broker
+    ports:
+      - 36616:36616
+  
+  web:
+    image: webui
+    networks:
+      - msgnetwork
+    build:
+      context: ./webui
+      dockerfile: ./Dockerfile.web
+    restart: always
+    ports:
+      - 80:8080
+
+networks:
+  msgnetwork:

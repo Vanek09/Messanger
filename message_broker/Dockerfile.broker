@@ -1,0 +1,10 @@
+FROM golang:1.18
+
+COPY . /usr/app
+WORKDIR /usr/app
+RUN go mod download && go mod verify
+RUN go build ./main.go
+CMD [ "./main" ]
+
+
+# EXPOSE 51616

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<head>
+    <title>Spire</title>
+    <link rel="stylesheet" href="/static/stylesheets/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Candal|Chewy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+<body>
+
+
+	<div class="wrapper">
+
+		<div class="content">
+
+			<div class="sidebar">
+
+				<div class="search-form-container">
+					<form class="search-form" action="" method="">
+						<span class="magnifier">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M228 68.7c-68.5 0-124 55.5-124 124 0 68.5 55.5 124 124 124 68.5 0 124-55.5 124-124C352 124.2 296.5 68.7 228 68.7zM228 283.3c-50 0-90.6-40.6-90.6-90.6 0-50 40.6-90.6 90.6-90.6s90.6 40.6 90.6 90.6C318.6 242.7 278 283.3 228 283.3z" class="a"/><path d="M392.8 414.3c6.1 9.2 4.1 21.3-4.4 26.9 -8.5 5.7-20.5 2.8-26.6-6.4l-88.6-133.2c-6.1-9.2-4.1-21.3 4.4-26.9 8.5-5.7 20.5-2.8 26.6 6.4L392.8 414.3z" class="a"/></svg>
+						</span>
+						<label for="search">Search</label>
+						<input id="search" name="search" type="text" placeholder="Search" />
+					</form>
+				</div>
+
+				<div class="contacts">
+
+					<ul class="contact-list">
+						<% if( users != null ) { %>
+                        <% users.forEach(details => { %>
+						<a href="/user/<%= user %>/<%= details._id %>">
+						<li class="person">
+							<span class="info">
+								<span class="name"><%= details.nickname %></span>
+								<!-- <span class="unread-messages">54</span> -->
+							</span>
+						</li>
+						</a>
+                        <% }) %>
+                        <% } %>
+						
+					</ul>
+
+				</div>
+
+			</div>
+
+			<div class="chatbox">
+
+				<div class="person">
+					<span class="info">
+						<% if (destination != null) { %>
+						<span class="name"><%= destination %></span>
+						<% } else { %>
+						<span class="name"></span>
+						<% } %>
+					</span>
+				</div>
+				<div class="chatbox-messages">
+                    <% if(messages != null) { %>
+                    <% messages.forEach(details => { %>
+					<div class="messages clear">
+						<% if( user != details.adress) { %>
+						<div class="sender">
+						<% } else { %>
+						<div class="user">
+						<% } %>
+							<div class="message-container">
+								<div class="message">
+									<p><%= details.message %></p>
+								</div>
+								<% if( user != details.adress) { %>
+								<span class="sender"><%= details.time %></span>
+								<% } else { %>
+								<span class="delivered"><%= details.time %></span>
+								<% } %>
+							</div>
+						</div>
+					</div>
+                    <% }) %>
+                    <% } %>
+
+				<% if (destination != null) { %>
+				<div class="message-form-container">
+					
+					<form class="message-form" action="/send/<%= user %>/<%= destination %>" method="POST">
+						<textarea id="message" name="content" placeholder="Type a message here..."></textarea>
+						<% if (destination == null) { %>
+						<button class="send-btn" type="submit" disabled>
+						<% } else { %>
+						<button class="send-btn" type="submit">
+						<% } %>
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30.2 30.1"><path class="st0" d="M2.1 14.6C8.9 12 28.5 4 28.5 4l-3.9 22.6c-0.2 1.1-1.5 1.5-2.3 0.8l-6.1-5.1 -4.3 4 0.7-6.7 13-12.3 -16 10 1 5.7 -3.3-5.3 -5-1.6C1.5 15.8 1.4 14.8 2.1 14.6z"/></svg>
+						</button>
+					</form>
+
+
+				</div>
+				<% } %>
+			</div>
+
+		</div>
+
+	</div>
+
+
+</body>

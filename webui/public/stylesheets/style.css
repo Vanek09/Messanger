@@ -1,0 +1,386 @@
+*, *:after, *:before {
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	-webkit-font-smoothing:antialiased;
+	font-smoothing:antialiased;
+	text-rendering:optimizeLegibility;
+}
+
+html {
+	font-size:62.5%;
+}
+body {
+	font: 400 normal 14px/1.4 'Lato', sans-serif;
+	color: #706c72;
+	background: linear-gradient(200deg, #00fae1, #054e8e) no-repeat center center fixed;
+}
+
+img {
+	width: 100%;
+	vertical-align: bottom;
+}
+a, a:visited {
+	color: #2895F1;
+	text-decoration: none;
+}
+a:hover, a:focus {
+	text-decoration: none;
+}
+a:focus {
+	outline: 1;
+}
+
+/*------------------------------------*\
+    Structure
+\*------------------------------------*/
+
+.wrapper {
+	width: 100%;
+}
+
+.content {
+	width: 1000px;
+	height: 620px;
+	margin: 40px auto;
+	box-shadow: 0 15px 30px 5px rgba(0,0,0,0.4);
+}
+
+.sidebar {
+	float: left;
+	width: 100%;
+	max-width: 30%;
+	height: 100%;
+	background: radial-gradient(circle farthest-corner at 0% 100% , #1e1f3c 0%, #2f315e 100%);
+}
+
+.chatbox {
+	position: relative;
+	float: left;
+	width: 100%;
+	max-width: 70%;
+	height: 100%;
+	background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+	box-shadow: inset 20px 0 30px -20px rgba(0, 0, 0, 0.6);
+}
+
+/*------------------------------------*\
+    Sidebar
+\*------------------------------------*/
+
+
+/* Search form */
+
+.search-form-container {
+	padding: 20px 20px 5px 20px;
+}
+
+.search-form {
+	width: 100%;
+	border: 1px solid #ffffff;
+	border: 1px solid rgba(255, 255, 255, 0.6);
+	border-radius: 20px;
+	font-size: 16px;
+	font-size: 1.6rem;
+}
+
+.magnifier {
+	display: inline-block;
+	padding: 2px 5px;
+}
+
+.magnifier svg {
+	width: 25px;
+	height: 25px;
+	vertical-align: middle;
+}
+
+.magnifier svg path {
+	fill: #ffffff;
+}
+
+.search-form label {
+	display: none;
+
+}
+
+.search-form input {
+	display: inline-block;
+	width: 208px;
+	padding: 2px 5px 2px 0;
+	color: #ffffff;
+	background: none;
+	border: 0;
+}
+
+.search-form input:focus {
+	outline: 0;
+}
+
+.search-form ::placeholder { 
+	color: rgb(255, 255, 255);
+	opacity: 1; 
+  }
+  
+.search-form ::-ms-input-placeholder {
+	color: rgb(255, 255, 255);
+  }
+
+.search-form input:focus::-webkit-input-placeholder { color:transparent; }
+.search-form input:focus::-moz-placeholder { color:transparent; }
+.search-form input:focus:-ms-input-placeholder { color:transparent; }
+.search-form input:focus:-moz-placeholder { color:transparent; }
+
+
+/* Contact List */
+
+.contact-list {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	height: 100%;
+	max-height: 560px;
+	overflow-y: hidden;
+}
+
+.contact-list:hover {
+	overflow-y: overlay;
+}
+
+.contact-list .person {
+	position: relative;
+	padding: 12px 0;
+	border-bottom: 1px solid rgba(112,108,114,0.3);
+	cursor: pointer;
+}
+
+.contact-list .person:hover {
+	background: rgba(0,0,0,0.3);
+}
+
+.contact-list .person.active:after {
+	content: '';
+	display: block;
+    position: absolute;
+   	top: 0; left: 0; bottom: 0; right: 0;
+	border-right: 4px solid #0bf9c7;
+	box-shadow: inset -4px 0px 4px -4px #0bf9c7;
+}
+
+.person .info {
+	display: inline-block;
+	width: 100%;
+    height: 40px;
+	padding: 0 0 0 10px; 
+  
+}
+
+.person .name {
+	margin: 0;
+	position: absolute;               
+	top: 50%;                         
+	transform: translate(0, -50%);
+	color: #ffffff;
+	font-size: 17px;
+	font-size: 1.7rem;
+	font-weight: 700;
+}
+
+
+.person .unread-messages {
+	margin: 0;
+	position: absolute;               
+	top: 50%;                         
+	transform: translate(0, -50%);
+	right: 20px;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	color: rgb(0, 0, 0);
+	background: #0bf9c7;
+	border-radius: 50%;
+}
+
+
+/*------------------------------------*\
+    Chatbox
+\*------------------------------------*/
+
+.chatbox {
+	color: #000000;
+}
+
+/* Chatbox header */
+
+.chatbox .person {
+	position: relative;
+	margin: 12px 20px 0 0;
+	padding-bottom: 12px;
+	border-bottom: 1px solid rgba(112,108,114,0.2);
+}
+
+.chatbox .person .info {
+	width: 290px;
+}
+
+.chatbox .person .name {
+	position: absolute;
+	right: 20px;
+	color: #000000;
+	font-size: 26px;
+	font-size: 2.6rem;
+}
+
+/* Chatbox messages */
+
+.chatbox-messages {
+	margin: 20px 20px 0 20px;
+	height: 455px;
+	overflow-y: overlay;
+}
+
+.chatbox-messages .message-container {
+	position: relative;
+	float: right;
+	width: 100%;
+}
+
+.chatbox-messages .message {
+	display: inline-block;
+	max-width: 80%;
+	margin-bottom: 12px;
+	border: 1px solid #dedede;
+	border-radius: 25px;
+}
+
+.chatbox-messages .sender .message {
+	background: #fff;
+}
+
+.chatbox-messages .user .message {
+	float: right;
+	margin-right: 75px;
+	color: #ffffff;
+	background: #0083FF;
+}
+
+.chatbox-messages .sender .message-container:first-child .message {
+	border-radius: 0 50px 50px 50px;
+}
+
+.chatbox-messages .user .message-container:first-child .message {
+	border-radius: 50px 0 50px 50px;
+}
+
+.chatbox-messages .message p {
+	margin: 14px 24px;
+	font-size: 16px;
+	font-size: 1.6rem;
+}
+
+.chatbox-messages .delivered {
+	position: absolute;
+	top: 0;
+	right: 15px;
+	font-size: 12px;
+	font-size: 1.2rem;
+}
+
+/* Chatbox message form */
+
+.message-form-container {
+	width: 95%;
+	height: 70px;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	margin: 0 20px;
+	border-top: 1px solid rgba(112,108,114,0.2);
+}
+
+.message-form textarea {
+	width: 85%;
+	margin: 15px 0 0 20px;
+	resize: none;
+	border: 0;
+	color: #000000;
+	outline: 0;
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+.send-btn {
+	position: absolute;
+	top: 12px;
+	right: 0;
+	width: 40px;
+	height: 40px;
+	background: radial-gradient(circle farthest-corner at 0% 100% , #1e1f3c 0%, #2f315e 100%);
+	border: 0;
+	border-radius: 50%;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+	cursor: pointer;
+}
+
+.send-btn:hover, .send-btn:focus {
+	opacity: 0.6;
+}
+
+.send-btn svg {
+	position: absolute;
+	top: 8px;
+	left: 8px;
+	width: 24px;
+	height: 24px;
+	vertical-align: middle;
+}
+
+.send-btn svg path {
+	fill: none;
+	stroke: #fff;
+}
+
+
+
+/*------------------------------------*\
+    Contacts List - Custom Scrollbar
+\*------------------------------------*/
+.contact-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.contact-list::-webkit-scrollbar-button{ display: none; }
+ 
+.contact-list::-webkit-scrollbar-track {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+.contact-list::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #e1e1e1;
+}
+
+.contact-list::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(0,0,0,0.4); 
+}
+
+
+/*------------------------------------*\
+    Chatbox messages - Custom Scrollbar
+\*------------------------------------*/
+
+.chatbox-messages::-webkit-scrollbar {
+	width: 6px;
+}
+
+.chatbox-messages::-webkit-scrollbar-track {
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.chatbox-messages::-webkit-scrollbar-thumb {
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background: radial-gradient(circle farthest-corner at 0% 100% , #1e1f3c 0%, #2f315e 100%);
+}

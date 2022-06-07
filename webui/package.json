@@ -1,0 +1,27 @@
+{
+  "name": "webui",
+  "version": "1.0.0",
+  "description": "UI for messanger",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Braurbeki/messanger.git"
+  },
+  "author": "Artem Olkhovskyi/Ivan Korobka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Braurbeki/messanger/issues"
+  },
+  "homepage": "https://github.com/Braurbeki/messanger#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.16"
+  }
+}
